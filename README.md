@@ -26,10 +26,12 @@ It includes product listings, an about page, and a contact form – all styled f
 
 ## 📂 Project Structure
 /assets
-  /images    -> All images used in the site
-  /icons     -> Logo and SVG icons
+  /images    
+  /icons    
 /css
-  style.css  -> Main stylesheet
+  style.css 
+/JS
+  main.js 
 index.html
 products.html
 about.html
@@ -37,4 +39,5 @@ contact.html
 README.md
 
 ## 🚀 Live Demo
+
 https://jana-hagras.github.io/Yumscape-Online-Food-Beverage-Shop/index.html
