@@ -11,6 +11,31 @@
 </head>
 
 <body>
+    <!--cart-->
+<div id="row_cart">
+    <div class="container">
+        <div class="cart-container">
+            <div class="cart">
+                <h4 class="center">Cart</h4>
+                <span class="exitCart" onclick="closeCart()">&times;</span>
+                <ul class="list-group cart-list"></ul>
+            </div>
+
+            <div class="check-out">
+                <p>Subtotal: <span class="subtotal float-right">0.00 $</span></p>
+                <p>Tax(14%): <span class="tax float-right">0.00 $</span></p>
+                <p>Total: <span class="total float-right">0.00 $</span></p>
+
+                <div class="buttons">
+                    <button class="btn btn-danger form-control col-5" onclick="clearCart()">Clear All</button>
+                    <button class="btn btn-secondary form-control col-5" onclick="CheckOut()">Check Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()">&#8679;</button>
+
 
 <header class="shadow fixed-top custom-header">
     <nav class="navbar navbar-expand-lg navbar-dark container">
@@ -36,6 +61,8 @@
             </li>
             <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item"><button id="cartOpenBtn" class="btn btn-outline-light ms-3">Cart</button>
             </li>
         </ul>
         </div>
@@ -68,7 +95,7 @@
 
         <div class="col-md-4 product-card" data-category="healthy">
         <div class="card h-100 shadow-sm">
-            <img src="assets/images/Salad.jpg" class="card-img-top imgs" alt="Bowl of fresh organic salad with seasonal vegetables and greens">
+            <img src="assets/images/salad.jpg" class="card-img-top imgs" alt="Bowl of fresh organic salad with seasonal vegetables and greens">
             <div class="card-body">
             <h5 class="card-title">Organic Salad</h5>
             <p class="card-text text-success fw-bold">$12.99</p>
@@ -80,7 +107,7 @@
 
         <div class="col-md-4 product-card" data-category="beverages">
         <div class="card h-100 shadow-sm">
-            <img src="assets/images/Smoothie.jpg" class="card-img-top imgs" alt="Berry Smoothie">
+            <img src="assets/images/smoothie.jpg" class="card-img-top imgs" alt="Berry Smoothie">
             <div class="card-body">
             <h5 class="card-title">Berry Smoothie</h5>
             <p class="card-text text-success fw-bold">$8.50</p>
@@ -92,7 +119,7 @@
 
         <div class="col-md-4 product-card" data-category="bakery">
         <div class="card h-100 shadow-sm">
-            <img src="assets/images/Bread.jpg" class="card-img-top imgs" alt="Artisan Bread">
+            <img src="assets/images/bread.jpg" class="card-img-top imgs" alt="Artisan Bread">
             <div class="card-body">
             <h5 class="card-title">Artisan Bread</h5>
             <p class="card-text text-success fw-bold">$5.99</p>
@@ -104,7 +131,7 @@
 
         <div class="col-md-4  product-card" data-category="healthy">
         <div class="card h-100 shadow-sm">
-            <img src="assets/images/Salad2.jpg" class="card-img-top imgs" alt="Fruit salad with a variety of fresh seasonal fruits">
+            <img src="assets/images/salad2.jpg" class="card-img-top imgs" alt="Fruit salad with a variety of fresh seasonal fruits">
             <div class="card-body">
             <h5 class="card-title">Fruit Salad</h5>
             <p class="card-text text-success fw-bold">$15.99</p>
@@ -128,7 +155,7 @@
 
         <div class="col-md-4  product-card" data-category="bakery">
         <div class="card h-100 shadow-sm">
-            <img src="assets/images/Bread2.jpg" class="card-img-top imgs" alt="Golden butter croissant with flaky layers">
+            <img src="assets/images/bread2.jpg" class="card-img-top imgs" alt="Golden butter croissant with flaky layers">
             <div class="card-body">
             <h5 class="card-title">Butter Croissant</h5>
             <p class="card-text text-success fw-bold">$5.99</p>
@@ -140,7 +167,7 @@
 
         <div class="col-md-4  product-card" data-category="healthy">
         <div class="card h-100 shadow-sm">
-            <img src="assets/images/Salad3.jpg" class="card-img-top imgs" alt="Greek yogurt parfait with granola and fresh berries">
+            <img src="assets/images/salad3.jpg" class="card-img-top imgs" alt="Greek yogurt parfait with granola and fresh berries">
             <div class="card-body">
             <h5 class="card-title">Greek Yogurt Parfait</h5>
             <p class="card-text text-success fw-bold">$13.99</p>
@@ -188,7 +215,7 @@
 
         <div class="col-md-4  product-card" data-category="bakery">
         <div class="card h-100 shadow-sm">
-            <img src="assets/images/Bread4.jpg" class="card-img-top imgs" alt="Garlic bread slices with buttery garlic spread">
+            <img src="assets/images/bread4.jpg" class="card-img-top imgs" alt="Garlic bread slices with buttery garlic spread">
             <div class="card-body">
             <h5 class="card-title">Garlic Bread</h5>
             <p class="card-text text-success fw-bold">$55.99</p>
@@ -200,7 +227,7 @@
 
         <div class="col-md-4  product-card" data-category="bakery">
         <div class="card h-100 shadow-sm">
-            <img src="assets/images/Bread5.jpg" class="card-img-top imgs" alt="Soft blueberry muffin with baked blueberries inside">
+            <img src="assets/images/bread5.jpg" class="card-img-top imgs" alt="Soft blueberry muffin with baked blueberries inside">
             <div class="card-body">
             <h5 class="card-title">Blueberry Muffin </h5>
             <p class="card-text text-success fw-bold">$20.59</p>
@@ -253,32 +280,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll("[data-filter]");
-    const cards = document.querySelectorAll(".product-card");
-
-    buttons.forEach(btn => {
-        btn.addEventListener("click", () => {
-        buttons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const filter = btn.getAttribute("data-filter").toLowerCase();
-
-        cards.forEach(card => {
-            const category = card.getAttribute("data-category").toLowerCase();
-            if (filter === "all" || category === filter) {
-            card.style.display = "";
-            } else {
-            card.style.display = "none";
-            }
-        });
-        });
-    });
-});
-</script>
-
+<script src="JS/main.js"></script>
 
 </body>
 </html>
